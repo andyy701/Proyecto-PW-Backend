@@ -1,5 +1,6 @@
-import { getRegistrosPac,createRegistroPac } from "../controllers/registros_pac.controller.js";
 import { Router } from "express";
+import { getRegistrosPac,createRegistroPac } from "../controllers/registros_pac.controller.js";
+
 
 const router = Router();
 

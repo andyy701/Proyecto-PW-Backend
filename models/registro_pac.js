@@ -1,12 +1,23 @@
-import sequelize from "./db.js";
-import Sequelize from 'sequelize';
+import { DataTypes } from "sequelize";
+import {sequelize} from "../database/database.js";
 
 export const Registro_Pac = sequelize.define('registro_pac',{
-    correo:{type: Sequelize.STRING, primaryKey:true},
-    contraseña:Sequelize.STRING,
-    name:Sequelize.STRING,
-    apellido:Sequelize.STRING,
-    dni:{type: Sequelize.INTEGER,primaryKey:true},
-    fecha_nacimiento:Sequelize.STRING,
-    telefono:{type: Sequelize.INTEGER,primaryKey:true}    
+    correo:{
+        type: DataTypes.STRING,
+        primaryKey:true
+    },
+    contraseña:DataTypes.STRING,
+    nombre:DataTypes.STRING,
+    apellido:DataTypes.STRING,
+    dni:{
+        type: DataTypes.INTEGER,
+        primaryKey:true
+    },
+    fecha_nacimiento:DataTypes.STRING,
+    telefono:{
+        type: DataTypes.INTEGER,
+        primaryKey:true
+    }    
+},{
+    timestamps:true
 })
