@@ -1,7 +1,7 @@
-import { Registro_Pac } from "../models/registro_paciente.js";
+import { Registro_Atencion } from "../models/atencion.js";
 import { Atencion } from "../models/atencion.js";
 
-export const getregistrospacientes = async (req, res) => {
+export const getregistrosatenciones = async (req, res) => {
 
     try {
         //el throw de abajo es para probar si el try catch funciona
@@ -9,24 +9,24 @@ export const getregistrospacientes = async (req, res) => {
         // el servidor responda que error es y que el servidor no se detenga y pueda seguir
         // realizando sus funciones en otros endpoints y hacien peticiones
         //throw new Error('query failed')
-        const registrospacientes = await Registro_Pac.findAll();
+        const registrosatenciones = await Registro_Atencion.findAll();
         //console.log(projects)
-        res.json(registrospacientes);
+        res.json(registrosatenciones);
     } catch (error) {
         return res.status(500).json({message : error.message});
     }
     
 }
 
-// export const getregistropaciente = async (req, res) => {
+// export const getregistroatencion = async (req, res) => {
 //     try {
 //         const {id} = req.params;
-//         const registrop= await Registro_Pac.findOne({
+//         const registrop= await Registro_Atencion.findOne({
 //             where: {
 //                 id : id
 //             }
 //         })
-//         if (!registrop) return res.status(404).json({message : 'El registro del paciente no existe'});
+//         if (!registrop) return res.status(404).json({message : 'El registro del atencion no existe'});
 
 //         res.json(registrop);
 //     } catch (error) {
@@ -35,22 +35,23 @@ export const getregistrospacientes = async (req, res) => {
     
 // }
 
-export const createregistropaciente = async (req, res) => {
+export const createregistroatencion = async (req, res) => {
     
     try {
-        const {id,name,lastname,email,password,birthdate,phone} = req.body;
-        const newPaciente= await Registro_Pac.create({
+        const {id,fecha,email,historial,diagnostico,receta,recomendaciones,puntuacion} = req.body;
+        const newatencion= await Registro_Atencion.create({
             id:id,
-            lastname:lastname,
-            email:email,
-            password:password,
-            birthdate:birthdate,
-            phone:phone
+            fecha:fecha,
+            historial:historial,
+            diagnostico:diagnostico,
+            receta:receta,
+            recomendaciones:recomendaciones,
+            puntuacion:puntuacion
         })
 
         //console.log(newProject);
         //res.send('creating projects');
-        res.json(newPaciente);
+        res.json(newatencion);
         
     } catch (error) {
         return res.status(500).json({message : error.message});
@@ -60,12 +61,12 @@ export const createregistropaciente = async (req, res) => {
 }
 
 
-export const getpacienteatencion = async (req, res) => {
+export const getatencionatencion = async (req, res) => {
     try {
         const {id} = req.params;
         const atencion = await Atencion.findAll({
             where : {
-                registro_paciente_id : id
+                id : id
             }
         })
         
