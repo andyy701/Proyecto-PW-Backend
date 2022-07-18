@@ -41,6 +41,7 @@ export const createregistropaciente = async (req, res) => {
         const {id,name,lastname,email,password,birthdate,phone} = req.body;
         const newPaciente= await Registro_Pac.create({
             id:id,
+            name:name,
             lastname:lastname,
             email:email,
             password:password,
