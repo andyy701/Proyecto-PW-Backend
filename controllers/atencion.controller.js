@@ -1,5 +1,5 @@
 import { Registro_Atencion } from "../models/atencion.js";
-import { Atencion } from "../models/atencion.js";
+import { atencion } from "../models/atencion.js";
 
 export const getregistrosatenciones = async (req, res) => {
 
@@ -42,6 +42,7 @@ export const createregistroatencion = async (req, res) => {
         const newatencion= await Registro_Atencion.create({
             id:id,
             fecha:fecha,
+            email:email,
             historial:historial,
             diagnostico:diagnostico,
             receta:receta,
@@ -64,7 +65,7 @@ export const createregistroatencion = async (req, res) => {
 export const getatencionatencion = async (req, res) => {
     try {
         const {id} = req.params;
-        const atencion = await Atencion.findAll({
+        const atencion = await atencion.findAll({
             where : {
                 id : id
             }

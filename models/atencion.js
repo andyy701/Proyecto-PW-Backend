@@ -1,29 +1,36 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Atencion extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+import { DataTypes } from "sequelize";
+import {sequelize} from "../database/database.js";
+
+export const atencion = sequelize.define('atencion', {
+    id: {
+       type: DataTypes.INTEGER,
+       primaryKey: true,
+
+    },
+    fecha: {
+        type: DataTypes.DATE
+    },
+    historial : {
+        type: DataTypes.STRING,
+        defaultValue: false
+    },
+    diagnostico : {
+        type: DataTypes.STRING,
+        defaultValue: false
+    },
+    receta : {
+        type: DataTypes.STRING,
+        defaultValue: false
+    },
+    recomendaciones : {
+        type: DataTypes.STRING,
+        defaultValue: false
+    },
+    puntuacion : {
+        type: DataTypes.INTEGER,
+        defaultValue: false
     }
-  }
-  Atencion.init({
-    id: DataTypes.INTEGER,
-    fecha: DataTypes.DATE,
-    historial: DataTypes.STRING,
-    diagnostico: DataTypes.STRING,
-    receta: DataTypes.STRING,
-    recomendaciones: DataTypes.STRING,
-    puntuacion: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Atencion',
-  });
-  return Atencion;
-};
+
+}, {
+    timestamps: false
+})
