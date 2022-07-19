@@ -1,5 +1,5 @@
-import { Registro_Med } from "../models/registro_medico.js";
-import { Atencion } from "../models/atencion.js";
+import { registromedico } from "../models/registromedico.js";
+import { atencion } from "../models/atencion.js";
 
 export const getregistrosmedicos = async (req, res) => {
 
@@ -9,7 +9,7 @@ export const getregistrosmedicos = async (req, res) => {
         // el servidor responda que error es y que el servidor no se detenga y pueda seguir
         // realizando sus funciones en otros endpoints y hacien peticiones
         //throw new Error('query failed')
-        const registrosmedicos = await Registro_Med.findAll();
+        const registrosmedicos = await registromedico.findAll();
         //console.log(projects)
         res.json(registrosmedicos);
     } catch (error) {
@@ -21,7 +21,7 @@ export const getregistrosmedicos = async (req, res) => {
 // export const getregistromedico = async (req, res) => {
 //     try {
 //         const {id} = req.params;
-//         const registrop= await Registro_Med.findOne({
+//         const registrop= await registromedico.findOne({
 //             where: {
 //                 id : id
 //             }
@@ -39,7 +39,7 @@ export const createregistromedico = async (req, res) => {
     
     try {
         const {id,name,lastname,email,password,especialidad,num_colegio,phone,direccion,preciop,precioo,puntuacion,comentarios} = req.body;
-        const newmedico= await Registro_Med.create({
+        const newmedico= await registromedico.create({
             id:id,
             name:name,
             lastname:lastname,
@@ -75,7 +75,7 @@ export const updateregistromedico = async (req,res) => {
         //console.log(id);
         //console.log(req.body);
         //res.send('updating projects');
-        const registrod= await Registro_Med.findByPk(id);
+        const registrod= await registromedico.findByPk(id);
         registrod.email = email;
         registrod.phone = phone;
         registrod.preciop = preciop;
@@ -92,7 +92,7 @@ export const updateregistromedico = async (req,res) => {
 export const getmedicoatencion = async (req, res) => {
     try {
         const {id} = req.params;
-        const atencion = await Atencion.findAll({
+        const atencion = await atencion.findAll({
             where : {
                 registro_medico_id : id
             }

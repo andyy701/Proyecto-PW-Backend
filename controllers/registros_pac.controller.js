@@ -1,5 +1,5 @@
-import { Registro_Pac } from "../models/registro_paciente.js";
-import { Atencion } from "../models/atencion.js";
+import { registropaciente } from "../models/registropaciente.js";
+import { atencion } from "../models/atencion.js";
 
 export const getregistrospacientes = async (req, res) => {
 
@@ -9,7 +9,7 @@ export const getregistrospacientes = async (req, res) => {
         // el servidor responda que error es y que el servidor no se detenga y pueda seguir
         // realizando sus funciones en otros endpoints y hacien peticiones
         //throw new Error('query failed')
-        const registrospacientes = await Registro_Pac.findAll();
+        const registrospacientes = await registropaciente.findAll();
         //console.log(projects)
         res.json(registrospacientes);
     } catch (error) {
@@ -21,7 +21,7 @@ export const getregistrospacientes = async (req, res) => {
 // export const getregistropaciente = async (req, res) => {
 //     try {
 //         const {id} = req.params;
-//         const registrop= await Registro_Pac.findOne({
+//         const registrop= await registropaciente.findOne({
 //             where: {
 //                 id : id
 //             }
@@ -39,7 +39,7 @@ export const createregistropaciente = async (req, res) => {
     
     try {
         const {id,name,lastname,email,password,birthdate,phone} = req.body;
-        const newPaciente= await Registro_Pac.create({
+        const newPaciente= await registropaciente.create({
             id:id,
             lastname:lastname,
             email:email,
@@ -63,7 +63,7 @@ export const createregistropaciente = async (req, res) => {
 export const getpacienteatencion = async (req, res) => {
     try {
         const {id} = req.params;
-        const atencion = await Atencion.findAll({
+        const atencion = await atencion.findAll({
             where : {
                 registro_paciente_id : id
             }

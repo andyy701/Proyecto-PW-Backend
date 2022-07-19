@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import {sequelize} from "../database/database.js";
-import {Task} from "./Task.js";
+import { atencion } from "./atencion.js";
 
 export const registromedico = sequelize.define('registromedico' , {
     id : {
