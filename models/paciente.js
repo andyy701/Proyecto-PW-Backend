@@ -1,29 +1,42 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Paciente extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+import { DataTypes } from "sequelize";
+import {sequelize} from "../database/database.js";
+import { atencion } from "./atencion.js";
+
+export const paciente = sequelize.define('paciente' , {
+    id : {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+    },
+    name : {
+        type: DataTypes.STRING
+    },
+    password : {
+        type: DataTypes.STRING
+    },
+    email : {
+        type : DataTypes.STRING
+    },
+    last_name : {
+        type: DataTypes.STRING
+    },
+    birth_date : {
+        type: DataTypes.STRING
+    },
+    phone : {
+        type: DataTypes.INTEGER
     }
-  }
-  Paciente.init({
-    id: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    lastname: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    phone: DataTypes.INTEGER,
-    birthdate: DataTypes.DATE
-  }, {
-    sequelize,
-    modelName: 'Paciente',
-  });
-  return Paciente;
-};
+ 
+},{
+    //esto sirve para quitar las tablas de createdAt y updatedAt
+    timestamps: true
+}); 
+
+paciente.hasMany(atencion, {
+    foreignKey: 'paciente_id',
+    sourceKey: 'id'
+})
+
+atencion.belongsTo(paciente, {
+    foreignKey: 'paciente_id',
+    targetId: 'id'
+})

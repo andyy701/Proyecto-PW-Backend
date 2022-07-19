@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
     */
      await queryInterface.bulkInsert('Medicos', [{
-      id: 101,
+      id: 201,
       name: "Jose Alberto Caballero Ortiz",
       password:"password",
       especialidad:"Ginecólogo",
@@ -39,7 +39,7 @@ module.exports = {
       */
     },
     {
-      id: 102,
+      id: 202,
       name: "Edgard Javier Hernan Vargas Solis",
       password:"password",
       especialidad:"Pediatra",

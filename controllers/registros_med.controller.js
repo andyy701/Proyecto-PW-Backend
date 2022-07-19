@@ -1,4 +1,4 @@
-import { registromedico } from "../models/registromedico.js";
+import { medico } from "../models/medico.js";
 import { atencion } from "../models/atencion.js";
 
 export const getregistrosmedicos = async (req, res) => {
@@ -9,7 +9,7 @@ export const getregistrosmedicos = async (req, res) => {
         // el servidor responda que error es y que el servidor no se detenga y pueda seguir
         // realizando sus funciones en otros endpoints y hacien peticiones
         //throw new Error('query failed')
-        const registrosmedicos = await registromedico.findAll();
+        const registrosmedicos = await medico.findAll();
         //console.log(projects)
         res.json(registrosmedicos);
     } catch (error) {
@@ -20,11 +20,11 @@ export const getregistrosmedicos = async (req, res) => {
 
 
 
-export const createregistromedico = async (req, res) => {
+export const createmedico = async (req, res) => {
     
     try {
         const {id,name,lastname,email,password,especialidad,num_colegio,phone,direccion,preciop,precioo,puntuacion,comentarios} = req.body;
-        const newmedico= await registromedico.create({
+        const newmedico= await medico.create({
             id:id,
             name:name,
             lastname:lastname,
@@ -51,7 +51,7 @@ export const createregistromedico = async (req, res) => {
     
 }
 
-export const updateregistromedico = async (req,res) => {
+export const updatemedico = async (req,res) => {
     
     try {
         const {id} = req.params;
@@ -60,7 +60,7 @@ export const updateregistromedico = async (req,res) => {
         //console.log(id);
         //console.log(req.body);
         //res.send('updating projects');
-        const registrod= await registromedico.findByPk(id);
+        const registrod= await medico.findByPk(id);
         registrod.email = email;
         registrod.phone = phone;
         registrod.preciop = preciop;

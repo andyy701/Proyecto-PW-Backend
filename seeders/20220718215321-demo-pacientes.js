@@ -12,7 +12,7 @@ module.exports = {
      * }], {});
     */
      await queryInterface.bulkInsert('Pacientes', [{
-      id: 101,
+      id: 301,
       name: "Diego Enrique",
       lastname:"Acuña Oyola",
       password:"password",
@@ -20,7 +20,7 @@ module.exports = {
       phone: 123456789,
     },
     {
-      id: 102,
+      id: 302,
       name: "Andy",
       lastname:"Arribasplata Muñoz",
       password:"password",

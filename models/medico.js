@@ -1,34 +1,58 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
-  class Medico extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+import { DataTypes } from "sequelize";
+import {sequelize} from "../database/database.js";
+import { atencion } from "./atencion.js";
+
+export const medico = sequelize.define('medico' , {
+    id : {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+    },
+    name : {
+        type: DataTypes.STRING
+    },
+    email : {
+        type : DataTypes.STRING
+    },
+    password : {
+        type: DataTypes.STRING
+    },
+    especialidad : {
+        type: DataTypes.STRING
+    },
+    numcolegio : {
+        type: DataTypes.STRING
+    },
+    phone : {
+        type: DataTypes.INTEGER
+    },
+    direccion : {
+        type: DataTypes.STRING
+    },
+    preciop : {
+        type: DataTypes.INTEGER
+    },
+    precioo : {
+        type: DataTypes.INTEGER
+    },
+    puntuacion : {
+        type: DataTypes.INTEGER
+    },
+    comentarios : {
+        type: DataTypes.STRING
     }
-  }
-  Medico.init({
-    id: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    especialidad: DataTypes.STRING,
-    numcolegio: DataTypes.INTEGER,
-    phone: DataTypes.INTEGER,
-    direccion: DataTypes.STRING,
-    preciop: DataTypes.INTEGER,
-    precioo: DataTypes.INTEGER,
-    puntuacion: DataTypes.INTEGER,
-    comentarios: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Medico',
-  });
-  return Medico;
-};
+    
+ 
+},{
+    //esto sirve para quitar las tablas de createdAt y updatedAt
+    timestamps: true
+}); 
+
+medico.hasMany(atencion, {
+    foreignKey: 'medico_id',
+    sourceKey: 'id'
+})
+
+atencion.belongsTo(medico, {
+    foreignKey: 'medico_id',
+    targetId: 'id'
+})

@@ -4,6 +4,9 @@ import {sequelize} from "./database/database.js"
 //cuando la base de datos esta vacia
 //import "./models/Project.js";
 //import "./models/Task.js";
+import "./models/paciente.js";
+import "./models/medico.js";
+import "./models/atencion.js";
 
 async function main() {
 
