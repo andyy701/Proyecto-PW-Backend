@@ -1,6 +1,6 @@
 
-import { registropaciente } from "../models/registropaciente.js";
-import { atencion } from "../models/atencion.js";
+import { paciente } from "../models/paciente.js";
+import { Atencion } from "../models/atencion.js";
 
 
 export const getregistrospacientes = async (req, res) => {
@@ -12,7 +12,7 @@ export const getregistrospacientes = async (req, res) => {
         // realizando sus funciones en otros endpoints y hacien peticiones
         //throw new Error('query failed')
 
-        const registrospacientes = await registropaciente.findAll();
+        const registrospacientes = await paciente.findAll();
 
         //console.log(projects)
         res.json(registrospacientes);
@@ -23,11 +23,11 @@ export const getregistrospacientes = async (req, res) => {
 }
 
 
-export const createregistropaciente = async (req, res) => {
+export const createpaciente = async (req, res) => {
     
     try {
         const {id,name,lastname,email,password,birthdate,phone} = req.body;
-        const newPaciente= await registropaciente.create({
+        const newPaciente= await paciente.create({
             id:id,
             lastname:lastname,
             email:email,

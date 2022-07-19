@@ -12,6 +12,6 @@ import Sequelize from 'sequelize';
 //     }
 //   );
 
-const URL = 'postgres://postgres:password@localhost:5432/postgres'
+ const URL = 'postgres://postgres:password@localhost:5432/postgres'
 
-export const sequelize = new Sequelize(URL)
+ export const sequelize = new Sequelize(URL)

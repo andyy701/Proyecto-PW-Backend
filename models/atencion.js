@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import {sequelize} from "../database/database.js";
 
-export const atencion = sequelize.define('atencion', {
+export const Atencion = sequelize.define('Atencions', {
     id: {
        type: DataTypes.INTEGER,
        primaryKey: true,
@@ -9,6 +9,9 @@ export const atencion = sequelize.define('atencion', {
     },
     fecha: {
         type: DataTypes.DATE
+    },
+    email: {
+        type: DataTypes.STRING
     },
     historial : {
         type: DataTypes.STRING,
@@ -28,7 +31,7 @@ export const atencion = sequelize.define('atencion', {
     },
     puntuacion : {
         type: DataTypes.INTEGER,
-        defaultValue: false
+        
     }
 
 }, {

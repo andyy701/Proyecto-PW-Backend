@@ -14,6 +14,7 @@ module.exports = {
      await queryInterface.bulkInsert('Atencions', [{
       id: 101,
       fecha:new Date(2022,7,18),
+      
       historial:"Ninguno",
       diagnostico:"Reservado",
       receta:"Advil 3 veces al día por 3 días",
@@ -32,6 +33,7 @@ module.exports = {
     {
       id: 102,
       fecha:new Date(2022,7,19),
+      
       historial:"Fiebre,Tos,Cansancio,Pérdida del gusto o del olfato",
       diagnostico:"Covid-19",
       receta:"Baricitinib 4 veces al día por 7 días",
