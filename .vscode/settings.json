@@ -4,11 +4,19 @@
             "previewLimit": 50,
             "server": "localhost",
             "port": 5432,
+<<<<<<< HEAD
             "driver": "PostgreSQL",
             "name": "Local",
             "database": "new_database2",
             "username": "postgres",
             "password": "password"
+=======
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "Local2",
+            "database": "new_database2",
+            "username": "postgres"
+>>>>>>> 6305a0eb1fb06d76d3a474b9de1a95dcafa27dd2
         }
     ]
 }
