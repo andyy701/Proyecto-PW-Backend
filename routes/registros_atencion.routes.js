@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { getregistrosatenciones,createregistroatencion } from "../controllers/registros_pac.controller.js";
+import { getregistrosatenciones,createregistroatencion } from "../controllers/atencion.controller.js";
 
 
 const router = Router();

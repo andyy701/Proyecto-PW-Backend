@@ -1,6 +1,6 @@
 
 import { paciente } from "../models/paciente.js";
-import { atencion } from "../models/atencion.js";
+import { Atencion } from "../models/atencion.js";
 
 
 export const getregistrospacientes = async (req, res) => {

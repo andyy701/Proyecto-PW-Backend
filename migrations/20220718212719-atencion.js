@@ -8,11 +8,12 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
+
       fecha: {
         type: Sequelize.DATE
+      },
+      email: {
+        type: Sequelize.STRING
       },
       historial: {
         type: Sequelize.STRING

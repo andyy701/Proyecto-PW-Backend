@@ -1,5 +1,5 @@
-import { Registro_Atencion } from "../models/atencion.js";
-import { atencion } from "../models/atencion.js";
+import { Atencion } from "../models/atencion.js";
+
 
 export const getregistrosatenciones = async (req, res) => {
 
@@ -9,7 +9,7 @@ export const getregistrosatenciones = async (req, res) => {
         // el servidor responda que error es y que el servidor no se detenga y pueda seguir
         // realizando sus funciones en otros endpoints y hacien peticiones
         //throw new Error('query failed')
-        const registrosatenciones = await Registro_Atencion.findAll();
+        const registrosatenciones = await Atencion.findAll();
         //console.log(projects)
         res.json(registrosatenciones);
     } catch (error) {
@@ -39,7 +39,7 @@ export const createregistroatencion = async (req, res) => {
     
     try {
         const {id,fecha,email,historial,diagnostico,receta,recomendaciones,puntuacion} = req.body;
-        const newatencion= await Registro_Atencion.create({
+        const newatencion= await Atencion.create({
             id:id,
             fecha:fecha,
             email:email,
@@ -65,7 +65,7 @@ export const createregistroatencion = async (req, res) => {
 export const getatencionatencion = async (req, res) => {
     try {
         const {id} = req.params;
-        const atencion = await atencion.findAll({
+        const atencion = await Atencion.findAll({
             where : {
                 id : id
             }
